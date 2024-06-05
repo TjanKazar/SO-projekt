@@ -3,7 +3,7 @@ namespace Sistemi_Odločanja
 	public partial class Form1 : Form
 	{
 		public List<Parameter> parametri;
-		public string imeAlternative;
+		public string imeTeme;
 
 		public Form1()
 		{
@@ -12,10 +12,6 @@ namespace Sistemi_Odločanja
 			ParameterName.Enabled = false;
 			param_dropdown.Enabled = false;
 			button1.Enabled = false;
-		}
-
-		private void ParameterName_TextChanged(object sender, EventArgs e)
-		{
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -39,6 +35,14 @@ namespace Sistemi_Odločanja
 			if (selectedNode != null)
 			{
 				selectedNode.Nodes.Add(node);
+				if (selectedNode.Name != imeTeme)
+				{
+					Parameter found = parametri.Find(p => p.Ime == selectedNodeName);
+					if (found != null)
+					{
+						found.Podparametri.Add(param);
+					}
+				}
 			}
 			else
 			{
@@ -47,20 +51,14 @@ namespace Sistemi_Odločanja
 			}
 
 			param_dropdown.Items.Add(param.Ime);
+			parametri.Add(param);
 		}
-
-
-		private void textBox1_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
 		private void button2_Click(object sender, EventArgs e)
 		{
 			param_dropdown.Items.Add(theme.Text);
 			param_dropdown.Text = theme.Text;
-			imeAlternative = theme.Text;
-			TreeNode startNode = new(imeAlternative);
+			imeTeme = theme.Text;
+			TreeNode startNode = new(imeTeme);
 			treeView1.Nodes.Add(startNode);
 			button2.Enabled = false;
 			ParameterName.Enabled = true;
@@ -82,10 +80,13 @@ namespace Sistemi_Odločanja
 					return foundNode;
 				}
 			}
-
 			return null;
 		}
 
-
+		private void PotrdiDrevo_Click(object sender, EventArgs e)
+		{
+			KoristiForm form = new KoristiForm(parametri);
+			form.Show();
+		}
 	}
 }

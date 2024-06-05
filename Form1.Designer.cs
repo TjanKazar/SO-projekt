@@ -166,6 +166,7 @@
 			PotrdiDrevo.TabIndex = 11;
 			PotrdiDrevo.Text = "Potrdi strukturo";
 			PotrdiDrevo.UseVisualStyleBackColor = false;
+			PotrdiDrevo.Click += PotrdiDrevo_Click;
 			// 
 			// Form1
 			// 
