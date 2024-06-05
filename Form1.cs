@@ -4,11 +4,6 @@ namespace Sistemi_Odločanja
 	{
 		public List<Parameter> parametri;
 		public string imeAlternative;
-		private List<TreeNode> CurrentNodeMatches = new List<TreeNode>();
-
-		private int LastNodeIndex = 0;
-
-		private string LastSearchText;
 
 		public Form1()
 		{
@@ -27,14 +22,14 @@ namespace Sistemi_Odločanja
 		{
 			if (string.IsNullOrEmpty(ParameterName.Text))
 			{
-				MessageBox.Show("Please enter a parameter name.");
+				MessageBox.Show("Prosim vstavite ime parametra.");
 				return;
 			}
 
-			Parameter param = new Parameter
+			Parameter param = new()
 			{
 				Ime = ParameterName.Text,
-				Podparametri = new List<Parameter>()
+				Podparametri = []
 			};
 
 			TreeNode node = new TreeNode(param.Ime);
@@ -47,7 +42,7 @@ namespace Sistemi_Odločanja
 			}
 			else
 			{
-				MessageBox.Show("Selected node not found in the tree.");
+				MessageBox.Show("Tega parametra ni v strukturi.");
 				return;
 			}
 
@@ -63,7 +58,7 @@ namespace Sistemi_Odločanja
 		private void button2_Click(object sender, EventArgs e)
 		{
 			param_dropdown.Items.Add(theme.Text);
-			param_dropdown.SelectedItem = theme;
+			param_dropdown.Text = theme.Text;
 			imeAlternative = theme.Text;
 			TreeNode startNode = new(imeAlternative);
 			treeView1.Nodes.Add(startNode);

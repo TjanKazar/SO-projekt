@@ -42,12 +42,13 @@
 			label5 = new Label();
 			treeView1 = new TreeView();
 			button2 = new Button();
+			PotrdiDrevo = new Button();
 			SuspendLayout();
 			// 
 			// ParameterName
 			// 
 			ParameterName.BackColor = SystemColors.ScrollBar;
-			ParameterName.Location = new Point(159, 324);
+			ParameterName.Location = new Point(108, 309);
 			ParameterName.Name = "ParameterName";
 			ParameterName.Size = new Size(100, 23);
 			ParameterName.TabIndex = 0;
@@ -56,7 +57,7 @@
 			// 
 			label1.AutoSize = true;
 			label1.ForeColor = Color.Linen;
-			label1.Location = new Point(159, 306);
+			label1.Location = new Point(108, 291);
 			label1.Name = "label1";
 			label1.Size = new Size(87, 15);
 			label1.TabIndex = 1;
@@ -70,7 +71,7 @@
 			// 
 			param_dropdown.BackColor = SystemColors.ScrollBar;
 			param_dropdown.FormattingEnabled = true;
-			param_dropdown.Location = new Point(149, 414);
+			param_dropdown.Location = new Point(97, 384);
 			param_dropdown.Name = "param_dropdown";
 			param_dropdown.Size = new Size(121, 23);
 			param_dropdown.TabIndex = 2;
@@ -79,7 +80,7 @@
 			// 
 			label2.AutoSize = true;
 			label2.ForeColor = Color.Linen;
-			label2.Location = new Point(149, 396);
+			label2.Location = new Point(97, 366);
 			label2.Name = "label2";
 			label2.Size = new Size(86, 15);
 			label2.TabIndex = 3;
@@ -90,7 +91,7 @@
 			label3.AutoSize = true;
 			label3.Font = new Font("Segoe UI", 16F);
 			label3.ForeColor = Color.Linen;
-			label3.Location = new Point(123, 260);
+			label3.Location = new Point(72, 245);
 			label3.Name = "label3";
 			label3.Size = new Size(177, 30);
 			label3.TabIndex = 4;
@@ -101,7 +102,7 @@
 			label4.AutoSize = true;
 			label4.Font = new Font("Arial", 30F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			label4.ForeColor = Color.Peru;
-			label4.Location = new Point(68, 32);
+			label4.Location = new Point(1, 0);
 			label4.Name = "label4";
 			label4.Size = new Size(321, 45);
 			label4.TabIndex = 5;
@@ -110,7 +111,7 @@
 			// button1
 			// 
 			button1.BackColor = Color.Peru;
-			button1.Location = new Point(159, 500);
+			button1.Location = new Point(107, 431);
 			button1.Name = "button1";
 			button1.Size = new Size(97, 38);
 			button1.TabIndex = 6;
@@ -121,7 +122,7 @@
 			// theme
 			// 
 			theme.BackColor = SystemColors.ScrollBar;
-			theme.Location = new Point(159, 113);
+			theme.Location = new Point(108, 98);
 			theme.Name = "theme";
 			theme.Size = new Size(100, 23);
 			theme.TabIndex = 7;
@@ -130,7 +131,7 @@
 			// 
 			label5.AutoSize = true;
 			label5.ForeColor = Color.Linen;
-			label5.Location = new Point(159, 95);
+			label5.Location = new Point(108, 80);
 			label5.Name = "label5";
 			label5.Size = new Size(90, 15);
 			label5.TabIndex = 8;
@@ -139,15 +140,15 @@
 			// treeView1
 			// 
 			treeView1.BackColor = SystemColors.ScrollBar;
-			treeView1.Location = new Point(418, 12);
+			treeView1.Location = new Point(328, 12);
 			treeView1.Name = "treeView1";
-			treeView1.Size = new Size(783, 572);
+			treeView1.Size = new Size(614, 567);
 			treeView1.TabIndex = 9;
 			// 
 			// button2
 			// 
 			button2.BackColor = Color.Peru;
-			button2.Location = new Point(159, 194);
+			button2.Location = new Point(108, 179);
 			button2.Name = "button2";
 			button2.Size = new Size(97, 38);
 			button2.TabIndex = 10;
@@ -155,12 +156,24 @@
 			button2.UseVisualStyleBackColor = false;
 			button2.Click += button2_Click;
 			// 
+			// PotrdiDrevo
+			// 
+			PotrdiDrevo.BackColor = Color.Peru;
+			PotrdiDrevo.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
+			PotrdiDrevo.Location = new Point(60, 526);
+			PotrdiDrevo.Name = "PotrdiDrevo";
+			PotrdiDrevo.Size = new Size(190, 53);
+			PotrdiDrevo.TabIndex = 11;
+			PotrdiDrevo.Text = "Potrdi strukturo";
+			PotrdiDrevo.UseVisualStyleBackColor = false;
+			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(64, 64, 64);
-			ClientSize = new Size(1213, 596);
+			ClientSize = new Size(954, 591);
+			Controls.Add(PotrdiDrevo);
 			Controls.Add(button2);
 			Controls.Add(treeView1);
 			Controls.Add(label5);
@@ -194,5 +207,6 @@
 		private Label label5;
 		private TreeView treeView1;
 		private Button button2;
+		private Button PotrdiDrevo;
 	}
 }
