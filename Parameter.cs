@@ -7,6 +7,7 @@
 		public string Parent { get; set; }
 		public double Value { get; set; }
 		public double Probability { get; set; }
+		public double Korist {  get; set; }
 
 		public Parameter(string ime, List<Parameter> podparametri, string parent, double value, double probability) : this(ime, podparametri, parent)
 		{

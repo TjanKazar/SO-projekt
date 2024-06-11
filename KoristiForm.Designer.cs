@@ -52,7 +52,6 @@
 			label1.Size = new Size(195, 32);
 			label1.TabIndex = 1;
 			label1.Text = "Vpišite koristi";
-			label1.Click += label1_Click;
 			// 
 			// PotrdiKoristi
 			// 
