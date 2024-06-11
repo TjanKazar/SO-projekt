@@ -100,13 +100,13 @@
 			// label4
 			// 
 			label4.AutoSize = true;
-			label4.Font = new Font("Arial", 30F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label4.Font = new Font("Arial", 25F);
 			label4.ForeColor = Color.Peru;
-			label4.Location = new Point(1, 0);
+			label4.Location = new Point(12, 12);
 			label4.Name = "label4";
-			label4.Size = new Size(321, 45);
+			label4.Size = new Size(289, 39);
 			label4.TabIndex = 5;
-			label4.Text = "MAUT Odločanje";
+			label4.Text = "Odločitveno Drevo";
 			// 
 			// button1
 			// 
@@ -187,7 +187,7 @@
 			Controls.Add(label1);
 			Controls.Add(ParameterName);
 			Name = "Form1";
-			Text = "MAUT odločanje";
+			Text = "Odločitveno Drevo";
 			ResumeLayout(false);
 			PerformLayout();
 		}

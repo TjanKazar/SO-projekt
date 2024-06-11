@@ -31,7 +31,7 @@ namespace Sistemi_Odločanja
 			{
 				Ime = ParameterName.Text,
 				Podparametri = new List<Parameter>(),
-				Parent = param_dropdown.Text // Assign the parent string directly
+				Parent = param_dropdown.Text 
 			};
 
 			TreeNode node = new TreeNode(param.Ime);
@@ -45,11 +45,6 @@ namespace Sistemi_Odločanja
 				if (selectedNode.Name != imeTeme)
 				{
 					Parameter found = parametri.Find(p => p.Ime == selectedNodeName);
-					if (selectedNode.Parent != null && found != null)
-					{
-						// Assuming you want to update the parent name with a "*", but you need to handle it accordingly
-						found.Parent += "*";
-					}
 					if (found != null)
 					{
 						found.Podparametri.Add(param);
@@ -71,7 +66,7 @@ namespace Sistemi_Odločanja
 			param_dropdown.Items.Add(theme.Text);
 			param_dropdown.Text = theme.Text;
 			imeTeme = theme.Text;
-			TreeNode startNode = new TreeNode(imeTeme);
+			TreeNode startNode = new TreeNode(imeTeme + " (base)");
 			treeView1.Nodes.Add(startNode);
 			button2.Enabled = false;
 			ParameterName.Enabled = true;

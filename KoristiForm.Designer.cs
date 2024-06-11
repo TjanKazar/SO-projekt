@@ -39,7 +39,7 @@
 			koristTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			koristTable.Location = new Point(12, 44);
 			koristTable.Name = "koristTable";
-			koristTable.Size = new Size(365, 586);
+			koristTable.Size = new Size(499, 586);
 			koristTable.TabIndex = 0;
 			// 
 			// label1
@@ -47,11 +47,12 @@
 			label1.AutoSize = true;
 			label1.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
 			label1.ForeColor = Color.Peru;
-			label1.Location = new Point(56, 9);
+			label1.Location = new Point(150, 9);
 			label1.Name = "label1";
 			label1.Size = new Size(195, 32);
 			label1.TabIndex = 1;
 			label1.Text = "Vpišite koristi";
+			label1.Click += label1_Click;
 			// 
 			// PotrdiKoristi
 			// 
@@ -59,7 +60,7 @@
 			PotrdiKoristi.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
 			PotrdiKoristi.Location = new Point(12, 636);
 			PotrdiKoristi.Name = "PotrdiKoristi";
-			PotrdiKoristi.Size = new Size(365, 53);
+			PotrdiKoristi.Size = new Size(499, 53);
 			PotrdiKoristi.TabIndex = 12;
 			PotrdiKoristi.Text = "Naslednji Korak";
 			PotrdiKoristi.UseVisualStyleBackColor = false;
@@ -70,7 +71,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(64, 64, 64);
-			ClientSize = new Size(389, 697);
+			ClientSize = new Size(523, 697);
 			Controls.Add(PotrdiKoristi);
 			Controls.Add(label1);
 			Controls.Add(koristTable);
