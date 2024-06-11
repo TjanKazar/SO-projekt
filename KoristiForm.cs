@@ -1,9 +1,12 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Sistemi_Odločanja
 {
 	public partial class KoristiForm : Form
 	{
 		List<Parameter> listi;
+		List<Korist> koristi;
 		public KoristiForm(List<Parameter> parametri)
 		{
 			listi = new();
@@ -16,7 +19,16 @@ namespace Sistemi_Odločanja
 				}
 			}
 			koristTable.DataSource = listi;
+			DataGridViewTextBoxColumn column = new();
+			column.Name = "Korist";
+			column.HeaderText = "Korist";
+			koristTable.Columns.Add(column);
+
 		}
 
+		private void PotrdiKoristi_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

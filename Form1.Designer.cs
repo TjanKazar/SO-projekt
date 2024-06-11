@@ -142,7 +142,7 @@
 			treeView1.BackColor = SystemColors.ScrollBar;
 			treeView1.Location = new Point(328, 12);
 			treeView1.Name = "treeView1";
-			treeView1.Size = new Size(614, 567);
+			treeView1.Size = new Size(425, 567);
 			treeView1.TabIndex = 9;
 			// 
 			// button2
@@ -173,7 +173,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(64, 64, 64);
-			ClientSize = new Size(954, 591);
+			ClientSize = new Size(765, 591);
 			Controls.Add(PotrdiDrevo);
 			Controls.Add(button2);
 			Controls.Add(treeView1);

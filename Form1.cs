@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+
 namespace Sistemi_Odločanja
 {
 	public partial class Form1 : Form
@@ -22,10 +27,11 @@ namespace Sistemi_Odločanja
 				return;
 			}
 
-			Parameter param = new()
+			Parameter param = new Parameter()
 			{
 				Ime = ParameterName.Text,
-				Podparametri = []
+				Podparametri = new List<Parameter>(),
+				Parent = param_dropdown.Text // Assign the parent string directly
 			};
 
 			TreeNode node = new TreeNode(param.Ime);
@@ -35,9 +41,15 @@ namespace Sistemi_Odločanja
 			if (selectedNode != null)
 			{
 				selectedNode.Nodes.Add(node);
+
 				if (selectedNode.Name != imeTeme)
 				{
 					Parameter found = parametri.Find(p => p.Ime == selectedNodeName);
+					if (selectedNode.Parent != null && found != null)
+					{
+						// Assuming you want to update the parent name with a "*", but you need to handle it accordingly
+						found.Parent += "*";
+					}
 					if (found != null)
 					{
 						found.Podparametri.Add(param);
@@ -53,18 +65,20 @@ namespace Sistemi_Odločanja
 			param_dropdown.Items.Add(param.Ime);
 			parametri.Add(param);
 		}
+
 		private void button2_Click(object sender, EventArgs e)
 		{
 			param_dropdown.Items.Add(theme.Text);
 			param_dropdown.Text = theme.Text;
 			imeTeme = theme.Text;
-			TreeNode startNode = new(imeTeme);
+			TreeNode startNode = new TreeNode(imeTeme);
 			treeView1.Nodes.Add(startNode);
 			button2.Enabled = false;
 			ParameterName.Enabled = true;
 			param_dropdown.Enabled = true;
 			button1.Enabled = true;
 		}
+
 		private TreeNode FindNodeByName(string searchText, TreeNode startNode)
 		{
 			if (startNode.Text.ToLower().Contains(searchText.ToLower()))

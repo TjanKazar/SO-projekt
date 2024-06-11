@@ -30,6 +30,7 @@
 		{
 			koristTable = new DataGridView();
 			label1 = new Label();
+			PotrdiKoristi = new Button();
 			((System.ComponentModel.ISupportInitialize)koristTable).BeginInit();
 			SuspendLayout();
 			// 
@@ -38,7 +39,7 @@
 			koristTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			koristTable.Location = new Point(12, 44);
 			koristTable.Name = "koristTable";
-			koristTable.Size = new Size(279, 586);
+			koristTable.Size = new Size(365, 586);
 			koristTable.TabIndex = 0;
 			// 
 			// label1
@@ -52,12 +53,25 @@
 			label1.TabIndex = 1;
 			label1.Text = "Vpišite koristi";
 			// 
+			// PotrdiKoristi
+			// 
+			PotrdiKoristi.BackColor = Color.Peru;
+			PotrdiKoristi.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
+			PotrdiKoristi.Location = new Point(12, 636);
+			PotrdiKoristi.Name = "PotrdiKoristi";
+			PotrdiKoristi.Size = new Size(365, 53);
+			PotrdiKoristi.TabIndex = 12;
+			PotrdiKoristi.Text = "Naslednji Korak";
+			PotrdiKoristi.UseVisualStyleBackColor = false;
+			PotrdiKoristi.Click += PotrdiKoristi_Click;
+			// 
 			// KoristiForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(64, 64, 64);
-			ClientSize = new Size(305, 642);
+			ClientSize = new Size(389, 697);
+			Controls.Add(PotrdiKoristi);
 			Controls.Add(label1);
 			Controls.Add(koristTable);
 			Name = "KoristiForm";
@@ -71,5 +85,6 @@
 
 		private DataGridView koristTable;
 		private Label label1;
+		private Button PotrdiKoristi;
 	}
 }
