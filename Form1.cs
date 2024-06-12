@@ -63,7 +63,7 @@ namespace Sistemi_Odločanja
 			param_dropdown.Items.Add(param.Ime);
 			parametri.Add(param);
 			ParameterName.Text = "";
-			treeView1.ExpandAll(); // Expand all nodes after adding a new one
+			treeView1.ExpandAll();
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace Sistemi_Odločanja
 			ParameterName.Enabled = true;
 			param_dropdown.Enabled = true;
 			button1.Enabled = true;
-			treeView1.ExpandAll(); // Expand all nodes after adding the root node
+			treeView1.ExpandAll(); 
 		}
 
 		private TreeNode FindNodeByName(string searchText, TreeNode startNode)
@@ -106,7 +106,6 @@ namespace Sistemi_Odločanja
 
 		private void PotrdiDrevo_Click(object sender, EventArgs e)
 		{
-			// Validate the root node
 			if (parametri.Count == 0 || treeView1.Nodes.Count == 0)
 			{
 				MessageBox.Show("Prosimo, da najprej dodate vsaj en parameter.");

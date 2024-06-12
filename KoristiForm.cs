@@ -39,17 +39,14 @@ namespace Sistemi_Odločanja
 
 		private void PotrdiKoristi_Click(object sender, EventArgs e)
 		{
-			// Calculate Korist for leaf nodes
 			foreach (var param in listi)
 			{
 				param.Korist = param.Value * (param.Probability / 100);
 				Console.WriteLine($"Parameter: {param.Ime}, Value: {param.Value}, Probability: {param.Probability}, Korist: {param.Korist}");
 			}
 
-			// Calculate Korist for all nodes from bottom to top
 			CalculateKoristForAllNodes();
 
-			// Find the second deepest nodes
 			List<Parameter> secondDeepestNodes = parametri.Where(p => p.baseNode).ToList();
 
 			if (secondDeepestNodes.Count == 0)
@@ -58,7 +55,6 @@ namespace Sistemi_Odločanja
 				return;
 			}
 
-			// Calculate and display results for second deepest nodes
 			Parameter MaxNode = secondDeepestNodes.OrderByDescending(p => p.Korist).FirstOrDefault();
 			Parameter MinNode = secondDeepestNodes.OrderBy(p => p.Korist).FirstOrDefault();
 			double avg = secondDeepestNodes.Average(p => p.Korist);
@@ -85,11 +81,9 @@ namespace Sistemi_Odločanja
 		{
 			if (param.Podparametri.Count == 0)
 			{
-				// Leaf node, korist already calculated
 				return param.Korist;
 			}
 
-			// Calculate Korist for each child node
 			double totalKorist = 0;
 			foreach (var child in param.Podparametri)
 			{
