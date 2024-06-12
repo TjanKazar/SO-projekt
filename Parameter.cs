@@ -8,6 +8,13 @@
 		public double Value { get; set; }
 		public double Probability { get; set; }
 		public double Korist {  get; set; }
+		public bool baseNode { get; set; }
+
+		public Parameter(string ime, List<Parameter> podparametri, string parent, double value, double probability, double korist, bool baseNode) : this(ime, podparametri, parent, value, probability)
+		{
+			Korist = korist;
+			this.baseNode = baseNode;
+		}
 
 		public Parameter(string ime, List<Parameter> podparametri, string parent, double value, double probability) : this(ime, podparametri, parent)
 		{

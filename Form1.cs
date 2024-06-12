@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-
 namespace Sistemi_Odločanja
 {
 	public partial class Form1 : Form
@@ -27,12 +22,23 @@ namespace Sistemi_Odločanja
 				return;
 			}
 
+			if (parametri.Any(p => p.Ime == ParameterName.Text))
+			{
+				MessageBox.Show("Parameter s tem imenom že obstaja.");
+				return;
+			}
+
 			Parameter param = new Parameter()
 			{
 				Ime = ParameterName.Text,
 				Podparametri = new List<Parameter>(),
-				Parent = param_dropdown.Text 
+				Parent = param_dropdown.Text
 			};
+
+			if (param.Parent == imeTeme)
+			{
+				param.baseNode = true;
+			}
 
 			TreeNode node = new TreeNode(param.Ime);
 			string selectedNodeName = param_dropdown.Text;
@@ -42,13 +48,10 @@ namespace Sistemi_Odločanja
 			{
 				selectedNode.Nodes.Add(node);
 
-				if (selectedNode.Name != imeTeme)
+				Parameter found = parametri.Find(p => p.Ime == selectedNodeName);
+				if (found != null)
 				{
-					Parameter found = parametri.Find(p => p.Ime == selectedNodeName);
-					if (found != null)
-					{
-						found.Podparametri.Add(param);
-					}
+					found.Podparametri.Add(param);
 				}
 			}
 			else
@@ -59,10 +62,18 @@ namespace Sistemi_Odločanja
 
 			param_dropdown.Items.Add(param.Ime);
 			parametri.Add(param);
+			ParameterName.Text = "";
+			treeView1.ExpandAll(); // Expand all nodes after adding a new one
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(theme.Text))
+			{
+				MessageBox.Show("Prosim vstavite ime teme.");
+				return;
+			}
+
 			param_dropdown.Items.Add(theme.Text);
 			param_dropdown.Text = theme.Text;
 			imeTeme = theme.Text;
@@ -72,6 +83,7 @@ namespace Sistemi_Odločanja
 			ParameterName.Enabled = true;
 			param_dropdown.Enabled = true;
 			button1.Enabled = true;
+			treeView1.ExpandAll(); // Expand all nodes after adding the root node
 		}
 
 		private TreeNode FindNodeByName(string searchText, TreeNode startNode)
@@ -94,6 +106,13 @@ namespace Sistemi_Odločanja
 
 		private void PotrdiDrevo_Click(object sender, EventArgs e)
 		{
+			// Validate the root node
+			if (parametri.Count == 0 || treeView1.Nodes.Count == 0)
+			{
+				MessageBox.Show("Prosimo, da najprej dodate vsaj en parameter.");
+				return;
+			}
+
 			KoristiForm form = new KoristiForm(parametri);
 			form.Show();
 		}

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Windows.Forms;
 
 namespace Sistemi_Odločanja
@@ -36,43 +34,69 @@ namespace Sistemi_Odločanja
 			koristTable.Columns[nameof(Parameter.Value)].HeaderText = "Value";
 			koristTable.Columns[nameof(Parameter.Probability)].HeaderText = "Probability";
 			koristTable.Columns[nameof(Parameter.Korist)].Visible = false;
+			koristTable.Columns[nameof(Parameter.baseNode)].Visible = false;
 		}
 
 		private void PotrdiKoristi_Click(object sender, EventArgs e)
 		{
+			// Calculate Korist for leaf nodes
 			foreach (var param in listi)
 			{
 				param.Korist = param.Value * (param.Probability / 100);
 				Console.WriteLine($"Parameter: {param.Ime}, Value: {param.Value}, Probability: {param.Probability}, Korist: {param.Korist}");
 			}
 
-			List<Parameter> parentNodes = parametri.Where(p => p.Podparametri.Count() != 0).ToList();
-			foreach (var param in parentNodes)
-			{
-				double parentKorist = 0;
-				foreach(var parameter in param.Podparametri)
-				{
-					parentKorist += parameter.Korist;
-                   
-                }
-				param.Korist = parentKorist;
-				Console.WriteLine("Preverjanje vrednosti v Parent Param: Parent Param name : " + param.Ime + " Parent Param Korist : " + param.Korist);
-			}
-			foreach (var param in parentNodes)
-			{
+			// Calculate Korist for all nodes from bottom to top
+			CalculateKoristForAllNodes();
 
-				Console.WriteLine("Preverjanje vrednosti v listu: Podparameter name : " + param.Ime + " Podparameter Korist : " + param.Korist);
-			}
-			Parameter MaxNode = parentNodes.OrderByDescending(p => p.Korist).First();
-			Parameter MinNode = parentNodes.OrderBy(p => p.Korist).First();
-			double avg = 0;
-			foreach (var param in parentNodes)
+			// Find the second deepest nodes
+			List<Parameter> secondDeepestNodes = parametri.Where(p => p.baseNode).ToList();
+
+			if (secondDeepestNodes.Count == 0)
 			{
-				avg += param.Korist;
+				MessageBox.Show("No second deepest nodes found.");
+				return;
 			}
-			avg = avg / parentNodes.Count();
-			RezultatiForm rezultati = new(MaxNode, MinNode, avg);
+
+			// Calculate and display results for second deepest nodes
+			Parameter MaxNode = secondDeepestNodes.OrderByDescending(p => p.Korist).FirstOrDefault();
+			Parameter MinNode = secondDeepestNodes.OrderBy(p => p.Korist).FirstOrDefault();
+			double avg = secondDeepestNodes.Average(p => p.Korist);
+
+			if (MaxNode == null || MinNode == null)
+			{
+				MessageBox.Show("No valid nodes to calculate MaxNode or MinNode.");
+				return;
+			}
+
+			RezultatiForm rezultati = new RezultatiForm(MaxNode, MinNode, avg);
 			rezultati.Show();
+		}
+
+		private void CalculateKoristForAllNodes()
+		{
+			foreach (var param in parametri)
+			{
+				CalculateKorist(param);
+			}
+		}
+
+		private double CalculateKorist(Parameter param)
+		{
+			if (param.Podparametri.Count == 0)
+			{
+				// Leaf node, korist already calculated
+				return param.Korist;
+			}
+
+			// Calculate Korist for each child node
+			double totalKorist = 0;
+			foreach (var child in param.Podparametri)
+			{
+				totalKorist += CalculateKorist(child);
+			}
+			param.Korist = totalKorist;
+			return totalKorist;
 		}
 	}
 }
