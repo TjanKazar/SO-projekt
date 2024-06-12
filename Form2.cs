@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Sistemi_Odločanja
 {
@@ -15,6 +8,7 @@ namespace Sistemi_Odločanja
 		public Parameter Max;
 		public Parameter Min;
 		public double Avg;
+
 		public RezultatiForm(Parameter Max, Parameter Min, double Avg)
 		{
 			this.Max = Max;
@@ -28,5 +22,10 @@ namespace Sistemi_Odločanja
 			avg_val.Text = Math.Round(Avg, 2).ToString();
 		}
 
+		private void Vizualizacija_Click(object sender, EventArgs e)
+		{
+			Visualisation vizualizacija = new(Max, Min, Avg);
+			vizualizacija.Show();
+		}
 	}
 }

@@ -79,6 +79,7 @@ namespace Sistemi_Odločanja
 			imeTeme = theme.Text;
 			TreeNode startNode = new TreeNode(imeTeme + " (base)");
 			treeView1.Nodes.Add(startNode);
+
 			button2.Enabled = false;
 			ParameterName.Enabled = true;
 			param_dropdown.Enabled = true;
@@ -115,5 +116,7 @@ namespace Sistemi_Odločanja
 			KoristiForm form = new KoristiForm(parametri);
 			form.Show();
 		}
+
+
 	}
 }

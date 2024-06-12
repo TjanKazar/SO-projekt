@@ -36,6 +36,7 @@
 			max_val_name = new Label();
 			min_val = new Label();
 			max_val = new Label();
+			Vizualizacija = new Button();
 			SuspendLayout();
 			// 
 			// label1
@@ -118,11 +119,24 @@
 			max_val.TabIndex = 7;
 			max_val.Text = "max_val";
 			// 
+			// Vizualizacija
+			// 
+			Vizualizacija.BackColor = Color.Peru;
+			Vizualizacija.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
+			Vizualizacija.Location = new Point(577, 369);
+			Vizualizacija.Name = "Vizualizacija";
+			Vizualizacija.Size = new Size(190, 53);
+			Vizualizacija.TabIndex = 12;
+			Vizualizacija.Text = "Vizualizacija";
+			Vizualizacija.UseVisualStyleBackColor = false;
+			Vizualizacija.Click += Vizualizacija_Click;
+			// 
 			// RezultatiForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 450);
+			Controls.Add(Vizualizacija);
 			Controls.Add(max_val);
 			Controls.Add(min_val);
 			Controls.Add(max_val_name);
@@ -147,5 +161,6 @@
 		private Label max_val_name;
 		private Label min_val;
 		private Label max_val;
+		private Button Vizualizacija;
 	}
 }

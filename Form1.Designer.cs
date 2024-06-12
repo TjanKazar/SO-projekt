@@ -140,6 +140,7 @@
 			// treeView1
 			// 
 			treeView1.BackColor = SystemColors.ScrollBar;
+			treeView1.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
 			treeView1.Location = new Point(328, 12);
 			treeView1.Name = "treeView1";
 			treeView1.Size = new Size(425, 567);
