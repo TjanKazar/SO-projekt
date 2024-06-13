@@ -30,9 +30,9 @@ namespace Sistemi_Odločanja
 
 		private void CustomizeColumnHeaders()
 		{
-			koristTable.Columns[nameof(Parameter.Ime)].HeaderText = "Parameter Name";
-			koristTable.Columns[nameof(Parameter.Value)].HeaderText = "Value";
-			koristTable.Columns[nameof(Parameter.Probability)].HeaderText = "Probability";
+			koristTable.Columns[nameof(Parameter.Ime)].HeaderText = "Ime Parametra";
+			koristTable.Columns[nameof(Parameter.Value)].HeaderText = "Vrednost";
+			koristTable.Columns[nameof(Parameter.Probability)].HeaderText = "Verjetnost";
 			koristTable.Columns[nameof(Parameter.Korist)].Visible = false;
 			koristTable.Columns[nameof(Parameter.baseNode)].Visible = false;
 		}
